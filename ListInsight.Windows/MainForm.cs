@@ -140,8 +140,6 @@ namespace ListInsight.Windows
 
         private string IsAddressGmail(string address)
         {
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
             var addressType = gmailIdentifier.Identify(address);
 
             // If it's anything to do with Google, inc the counter and write it out to the csv
@@ -157,7 +155,6 @@ namespace ListInsight.Windows
             
             Interlocked.Increment(ref totalAddressesCount);
             Invoke((MethodInvoker) delegate { scanProgressBar.Value++; });
-            Console.WriteLine("Total: " + stopwatch.Elapsed);
             return address;
         }
 
